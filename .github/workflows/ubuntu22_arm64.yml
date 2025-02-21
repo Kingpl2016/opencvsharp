@@ -84,7 +84,7 @@ jobs:
           cmake \
             -D CMAKE_BUILD_TYPE=Release \
             -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
-            -D BUILD_SHARED_LIBS=OFF \
+            -D BUILD_SHARED_LIBS=ON \
             -D ENABLE_CXX11=ON \
             -D BUILD_EXAMPLES=OFF \
             -D BUILD_DOCS=OFF \
@@ -120,12 +120,22 @@ jobs:
             -D WITH_ADE=OFF \
             -D OPENCV_ENABLE_NONFREE=ON \
             -D CMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opencv_artifacts ..
+          # 编译 OpenCV
           make -j4
+          # 安装 OpenCV
           make install
+          # 更新动态库缓存（如果是共享库）
           sudo ldconfig
+
+          # 拷贝 .so 文件到指定目录
+          mkdir -p ${GITHUB_WORKSPACE}/opencvsharp/nuget/
+          find ${GITHUB_WORKSPACE}/opencv_artifacts/lib -name 'libopencv*.so' -exec cp {} ${GITHUB_WORKSPACE}/opencvsharp/nuget/ \;
+          
+          # 回到工作目录
           cd ${GITHUB_WORKSPACE}
           ls
-          cp ${GITHUB_WORKSPACE}/opencv_artifacts/libOpen* ${GITHUB_WORKSPACE}/opencvsharp/nuget/
+          # 列出文件，检查是否正确拷贝
+          ls ${GITHUB_WORKSPACE}/opencvsharp/nuget/
       
       - name: Build OpenCvSharpExtern
         run: |
