@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>OpenCvSharp4.runtime.linux-arm</id>
+        <id>OpenCvSharp4.runtime.linux-arm64</id>
         <version>4.3.0.20191030</version>
         <title>OpenCvSharp native bindings for linux-arm</title>
         <authors>shimat</authors>
@@ -10,8 +10,8 @@
         <projectUrl>https://github.com/shimat/opencvsharp</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/shimat/opencvsharp/master/nuget/icon/opencvsharp.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Internal implementation package for OpenCvSharp to work on Ubuntu 18.04 for ARM</description>
-        <summary>Internal implementation package for OpenCvSharp to work on Ubuntu 18.04 for ARM</summary>
+        <description>Internal implementation package for OpenCvSharp to work on Ubuntu 22.04 for ARM</description>
+        <summary>Internal implementation package for OpenCvSharp to work on Ubuntu 22.04 for ARM</summary>
         <releaseNotes></releaseNotes>
         <copyright>Copyright 2008-2019</copyright>
         <tags>Image Processing OpenCV Wrapper FFI opencvsharp</tags>
@@ -25,6 +25,6 @@
         </frameworkAssemblies>
     </metadata>
     <files>
-        <file src="native/libOpen*.so" target="runtimes/linux-x64/native" />
+        <file src="*.so" target="runtimes/linux-x64/native" />
     </files>
 </package>
