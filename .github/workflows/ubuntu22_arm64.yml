@@ -120,7 +120,7 @@ jobs:
             -D WITH_ADE=OFF \
             -D OPENCV_ENABLE_NONFREE=ON \
             -D CMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opencv_artifacts ..
-          make -j
+          make -j4
           make install
           sudo ldconfig
           cd ${GITHUB_WORKSPACE}
