@@ -1,30 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
+        <!-- 包的唯一标识符，在 NuGet 库中必须唯一 -->
         <id>OpenCvSharp4.runtime.linux-arm</id>
+
+        <!-- 包的版本号 -->
         <version>4.3.0.20191030</version>
+
+        <!-- 包的标题，在 NuGet 库中显示 -->
         <title>OpenCvSharp native bindings for linux-arm</title>
+
+        <!-- 包的作者信息 -->
         <authors>shimat</authors>
+
+        <!-- 包的许可证类型，此处为 Apache-2.0 -->
         <license type="expression">Apache-2.0</license>
+
+        <!-- 
+            旧的 licenseUrl 属性已被弃用，改用 <license> 声明。 
+            如果需要可以取消注释，但不推荐使用。
+        -->
         <!--<licenseUrl>https://opensource.org/licenses/BSD-3-Clause</licenseUrl>-->
+
+        <!-- 项目主页地址 -->
         <projectUrl>https://github.com/shimat/opencvsharp</projectUrl>
+
+        <!-- NuGet 包在库中显示的图标 -->
         <iconUrl>https://raw.githubusercontent.com/shimat/opencvsharp/master/nuget/icon/opencvsharp.png</iconUrl>
+
+        <!-- 安装包时是否要求用户接受许可协议 -->
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <!-- 包的详细描述 -->
         <description>Internal implementation package for OpenCvSharp to work on Ubuntu 18.04 for ARM</description>
+
+        <!-- 包的摘要 -->
         <summary>Internal implementation package for OpenCvSharp to work on Ubuntu 18.04 for ARM</summary>
+
+        <!-- 版本更新日志，此处为空 -->
         <releaseNotes></releaseNotes>
+
+        <!-- 版权信息 -->
         <copyright>Copyright 2008-2019</copyright>
+
+        <!-- 用于分类和搜索的标签 -->
         <tags>Image Processing OpenCV Wrapper FFI opencvsharp</tags>
+
+        <!-- 源码仓库的信息 -->
         <repository type="git" url="https://github.com/shimat/opencvsharp.git" />
+
         <dependencies>
+            <!-- 
+                声明该包所依赖的其他 NuGet 包
+                针对不同 .NET 目标框架的依赖关系
+                此处为空，表示对这些目标框架没有额外依赖
+            -->
             <group targetFramework="netstandard2.0"></group>
             <group targetFramework="netstandard2.1"></group>
             <group targetFramework="netcoreapp3.1"></group>
         </dependencies>
+
         <frameworkAssemblies>
+            <!-- 
+                引用 GAC 中的程序集，通常用于 .NET Framework 项目
+                此处为空，表示不需要额外引用
+            -->
         </frameworkAssemblies>
     </metadata>
+
     <files>
+        <!-- 
+            指定要包含在 NuGet 包中的文件及其目标路径
+            将 libOpenCvSharpExtern.so 复制到 runtimes/linux-arm/native 目录中
+            使得在 Linux ARM 环境中运行时能够正确加载本地库
+        -->
         <file src="libOpenCvSharpExtern.so" target="runtimes/linux-arm/native" />
     </files>
 </package>
