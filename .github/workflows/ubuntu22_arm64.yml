@@ -121,15 +121,15 @@ jobs:
             -D OPENCV_ENABLE_NONFREE=ON \
             -D CMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opencv_artifacts ..
           # 编译 OpenCV
-          make -j4
+          make -j$(nproc)
           # 安装 OpenCV
           make install
           # 更新动态库缓存（如果是共享库）
           sudo ldconfig
 
-          # 拷贝 .so 文件到指定目录
+          # 拷贝 libopencv* 文件到指定目录
           mkdir -p ${GITHUB_WORKSPACE}/opencvsharp/nuget/
-          find ${GITHUB_WORKSPACE}/opencv_artifacts/lib -name 'libopencv*.so' -exec cp {} ${GITHUB_WORKSPACE}/opencvsharp/nuget/ \;
+          find ${GITHUB_WORKSPACE}/opencv_artifacts/lib -name 'libopencv*' -exec cp {} ${GITHUB_WORKSPACE}/opencvsharp/nuget/ \;
           
           # 回到工作目录
           cd ${GITHUB_WORKSPACE}
