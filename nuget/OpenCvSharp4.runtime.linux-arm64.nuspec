@@ -25,6 +25,6 @@
         </frameworkAssemblies>
     </metadata>
     <files>
-        <file src="*.*" target="runtimes/linux-x64/native" />
+        <file src="lib*" target="runtimes/linux-x64/native" />
     </files>
 </package>
